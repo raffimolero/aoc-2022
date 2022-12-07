@@ -9,7 +9,7 @@ fn main() {
     let side_day = input.next().expect("cargo run <a|b><day>");
     assert_eq!(input.next(), None, "ay bro too many args");
     let (side, day) = side_day.split_at(1);
-    let [feature_tag, b_tag] = match side {
+    let [feature_tag, half_tag] = match side {
         "a" => ["", ""],
         "b" => ["--features", "b"],
         _ => panic!("a or b, then a number, without spaces"),
@@ -19,7 +19,7 @@ fn main() {
 
     Command::new("cargo")
         .current_dir(current_dir().unwrap())
-        .args(["run", "--example", &example, feature_tag, b_tag])
+        .args(["run", "--example", &example, feature_tag, half_tag])
         .spawn()
         .unwrap()
         .wait()

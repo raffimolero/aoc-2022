@@ -12,6 +12,7 @@ fn bitflag(c: u8) -> u64 {
     1 << priority(c)
 }
 
+#[cfg(not(feature = "b"))]
 fn common_item_priority(line: String) -> u64 {
     let (a, b) = line.as_bytes().split_at(line.len() / 2);
     let mut flags = 0_u64;
